@@ -12,6 +12,37 @@ public class LinkedList2 {
 			next = null; 
 		}
 	}
+	void delPos(int position) {
+		//if linked list is empty
+		if (head== null) {
+			return;
+		}
+		// store head node
+		Node temp = head; 
+
+		// if head needs to be removed
+		if(position == 0) {
+			head = temp.next;
+			return;
+		}
+		// find previous node of the node to be deleted
+		for(int i =0; temp != null &&  i < position-1;
+			i++	) {
+			temp = temp.next;
+		}
+		// if position is more than number of nodes 
+		if(temp == null || temp.next == null) {
+			return;
+		}
+		//Node temp- > next is the node to be deleted
+		//store pointer to the next of node to be deleted
+		
+		Node next = temp.next.next;
+		temp.next=next;// unlink the deleted node from list
+				
+		
+	}
+	
 	void deleNode(int key) {
 		//store head node 
 		Node temp = head, prev = null; 
@@ -138,7 +169,7 @@ public class LinkedList2 {
 		
 		
 		System.out.println("\n Delete node 1 :");
-		llist.deleNode(4);
+		llist.delPos(5);
 		llist.printList();
 		
 		
